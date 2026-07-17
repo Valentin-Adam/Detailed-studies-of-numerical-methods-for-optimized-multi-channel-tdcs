@@ -55,7 +55,6 @@ if head_model=="Sphere":
     data_cfg = configs['data_sphere']
 else:
     data_cfg = configs['data_head']
-cap_data_exchange_path = data_cfg.get('cap_data_exchange')
 current_densities_path = data_cfg.get('current_densities')
 element_centers_path = data_cfg.get('element_centers')
 element_labels_path = data_cfg.get('element_labels')
@@ -65,8 +64,6 @@ outputdir = data_cfg.get('outputdir_BB')
 
 # ensure paths exist and output dir
 os.makedirs(outputdir, exist_ok=True)
-if cap_data_exchange_path:
-    sys.path.insert(0, cap_data_exchange_path)
 
 from admm_implementation.io_utils import h5_to_np_array  
 
