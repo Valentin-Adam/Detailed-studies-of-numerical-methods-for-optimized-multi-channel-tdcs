@@ -72,7 +72,7 @@ print(data[0].shape)
 print(data[1].shape)
 print(data[2].shape)
 
-from master_thesis.admm.active_set_wrapper.active_set import active_set_setup, active_set_evaluation
+from active_set_wrapper.active_set import active_set_setup, active_set_evaluation
 
 # Target generation for Sphere or Head (n_targets_sphere targets in sphere case, n_targets_head in head case)
 if head_model=="Sphere":
@@ -277,7 +277,7 @@ for i in range(len(alphas)):#
         else:
             random_indice = rng.integers(0,n_targets_head)
 
-    from master_thesis.admm.admm_implementation.io_utils import compute_stats
+    from admm.admm_implementation.io_utils import compute_stats
     print(f'-------------------------------------------------------------')
     print(f'--------Computing statististics for radial/quasiradial target with indice {target_element_indices_radial[random_indice]}--------')
     cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial,target_element_indices_radial[random_indice],radial_vectors[random_indice])

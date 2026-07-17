@@ -76,9 +76,9 @@ print(data[0].shape)
 print(data[1].shape)
 print(data[2].shape)
 
-from master_thesis.admm.admm_implementation.io_utils import create_B_and_B_run_directory
-from master_thesis.branch_bound.branch_bound_basis import  active_set_solution_heuristic, branch_and_bound_basis
-from master_thesis.admm.active_set_wrapper.active_set import active_set_setup
+from admm.admm_implementation.io_utils import create_B_and_B_run_directory
+from branch_bound.branch_bound_basis import  active_set_solution_heuristic, branch_and_bound_basis
+from admm.active_set_wrapper.active_set import active_set_setup
 
 # Generating random target
 if head_model=="Sphere":
@@ -271,7 +271,7 @@ for i in range(len(target_element_indices_tangential)):
             random_indice = rng.integers(0,n_targets_head)
 
 # Printing stats for the solutions
-from master_thesis.admm.admm_implementation.io_utils import compute_stats
+from admm.admm_implementation.io_utils import compute_stats
 print(f'-------------------------------------------------------------')
 print(f'--------Computing statististics for radial/quasiradial target with indice {target_element_indices_radial[random_indice]}--------')
 cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial_final,target_element_indices_radial[random_indice],radial_vectors[random_indice])

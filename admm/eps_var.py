@@ -49,7 +49,6 @@ if head_model=="Sphere":
     data_cfg = configs['data_sphere']
 else:
     data_cfg = configs['data_head']
-cap_data_exchange_path = data_cfg.get('cap_data_exchange')
 current_densities_path = data_cfg.get('current_densities')
 element_centers_path = data_cfg.get('element_centers')
 element_labels_path = data_cfg.get('element_labels')
@@ -59,8 +58,6 @@ outputdir = data_cfg.get('outputdir_active_set')
 
 # ensure paths exist and output dir
 os.makedirs(outputdir, exist_ok=True)
-if cap_data_exchange_path:
-    sys.path.insert(0, cap_data_exchange_path)
 
 from admm_implementation.io_utils import h5_to_np_array  
 
@@ -73,7 +70,7 @@ print(data[0].shape)
 print(data[1].shape)
 print(data[2].shape)
 
-from master_thesis.admm.active_set_wrapper.active_set import active_set_setup, active_set_evaluation
+from admm.active_set_wrapper.active_set import active_set_setup, active_set_evaluation
 
 # Target generation for Sphere or Head (n_targets_sphere targets in sphere case, n_targets_head in head case)
 if head_model=="Sphere":
@@ -283,7 +280,7 @@ for i in range(len(epsilons)):
             random_indice = rng.integers(0,n_targets_head)
 
     # Compute Stats for this target with the solutions 
-    from master_thesis.admm.admm_implementation.io_utils import compute_stats
+    from admm.admm_implementation.io_utils import compute_stats
     print(f'-------------------------------------------------------------')
     print(f'--------Computing statististics for radial/quasiradial target with indice {target_element_indices_radial[random_indice]}--------')
     cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial,target_element_indices_radial[random_indice],radial_vectors[random_indice])

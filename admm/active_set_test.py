@@ -1,12 +1,9 @@
 import numpy as np
-import h5py as h5
 import sys
 import os
 import ast
 import configparser
 import time
-import subprocess
-import re
 
 # Select if...
 #   - one_artifial_target = False -> one wants to test multiple targets and write one random radial and one random tangential 
@@ -73,7 +70,7 @@ print(data[1].shape)
 print(data[2].shape)
 
 
-from master_thesis.admm.active_set_wrapper.active_set import active_set_setup, active_set_evaluation
+from admm.active_set_wrapper.active_set import active_set_setup, active_set_evaluation
 
 # Target generation for Sphere or Head (n_targets_sphere targets in sphere case, n_targets_head in head case)
 if head_model=="Sphere":
@@ -281,7 +278,7 @@ else:
     else:
         random_indice = rng.integers(0,n_targets_head)
 
-from master_thesis.admm.admm_implementation.io_utils import compute_stats
+from admm.admm_implementation.io_utils import compute_stats
 print(f'-------------------------------------------------------------')
 print(f'--------Computing statististics for radial/quasiradial target with indice {target_element_indices_radial[random_indice]}--------')
 cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial,target_element_indices_radial[random_indice],radial_vectors[random_indice])

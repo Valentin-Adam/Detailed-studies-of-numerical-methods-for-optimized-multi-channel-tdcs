@@ -1,7 +1,7 @@
 import time
 import numpy as np 
 import duneuropy_optimization as dpo
-from master_thesis.admm.active_set_wrapper.active_set import active_set_evaluation, active_set_setup, active_set_assembly, initial_guess_and_working_set_from_active_constraints, initial_guess_and_working_set_from_active_constraints, active_set_assembly_with_precomp
+from admm.active_set_wrapper.active_set import active_set_evaluation, active_set_setup, active_set_assembly, initial_guess_and_working_set_from_active_constraints, initial_guess_and_working_set_from_active_constraints, active_set_assembly_with_precomp
 
 def one_pos_one_neg_then_abs_picking_rule(solution_vector, electrode_set, n_usable_electrodes):
     """
