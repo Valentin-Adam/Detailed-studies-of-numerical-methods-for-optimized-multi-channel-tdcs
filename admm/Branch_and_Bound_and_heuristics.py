@@ -32,7 +32,7 @@ grey_matter_non_target = True
 tolerance = 0.000001
 
 # Select heuristic one wants to use for the usable electrode constraint 
-#   - heuristic None means the Branch and Bound is used, the one can choose a picking rule for the upper bound 
+#   - heuristic None means the Branch and Bound is used, then one can choose a picking rule for the upper bound 
 #   - heuristic 'Half', 'One' or 'Simple' as described in Section 6.3.2. in thesis 
 heuristic = 'Half'  # None -> BandB or 'Half' or 'One' or 'Simple'
 advanced_picking_rule = 'One'  # 'Half' -> Half, 'One' -> One, None -> Simple

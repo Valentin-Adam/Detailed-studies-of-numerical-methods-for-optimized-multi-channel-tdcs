@@ -11,7 +11,7 @@ import re
 # Select if...
 #   - one wants to test multiple targets and write one random radial and one random tangential 
 #   - one wants one radial and one tangential target computation and visualisation that are near each other
-one_artificial_target = True
+one_artificial_target = False
 
 # setting active_set_parameters
 alphas = [10,1e-5,10] # here varying alphas and betas for the thesis

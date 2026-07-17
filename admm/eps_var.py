@@ -12,7 +12,7 @@ import time
 # Select if...
 #   - one wants to test multiple targets and write one random radial and one random tangential 
 #   - one wants one radial and one tangential target computation and visualisation that are near each other
-one_artificial_target = True
+one_artificial_target = False
 # setting active_set_parameters
 alpha = 10
 beta = 10
