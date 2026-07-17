@@ -1,5 +1,5 @@
 # Detailed studies of numerical methods for optimized multi-channel transcranial direct current stimulation
-## Master Thesis Valentin Adam. Universität Münster.
+## Master Thesis: Valentin Adam - University of Münster.
 
 ## General
 This Git repository contains all the relevant code that was developed for the results in my thesis. 
@@ -27,3 +27,7 @@ The structure is as follows:
     - Branch_and_Bound_and_heuristic.py: calls the Branch and Bound algorithm or the heuristic approaches (ref Thesis Section 6.3.2)
 
 - The folder branch_bound contains just the Branch and Bound implementation and the heuristic approaches for the additional constraint
+
+## Usage 
+
+The python files can be executed in the normal way, while you are in the admm folder just call the python files.
