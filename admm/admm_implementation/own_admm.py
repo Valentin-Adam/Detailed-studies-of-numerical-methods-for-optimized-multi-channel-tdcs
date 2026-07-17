@@ -262,11 +262,11 @@ def tDCS_admm(I_0, B,eps, mu_1, mu_2, alpha, beta, omega, e_tilde,max_iter=10000
 
         # adaptive rhoupdate
         if iteration > 50  and iteration % update_mu_every == 0:
-            if pr_norm > rho * du_norm:
+            if pr_norm > rho * du_norm and du_norm > 1e-12:
                 mu_1 *= tau_increase
                 if verbosity >=1:
                     print(f"mu_1 increased to {mu_1}")
-            elif du_norm > rho * pr_norm:
+            elif du_norm > rho * pr_norm and pr_norm > 1e-12:
                 mu_1 /= tau_decrease
                 if verbosity >=1:
                     print(f"mu_1 decreased to {mu_1}")
@@ -281,11 +281,11 @@ def tDCS_admm(I_0, B,eps, mu_1, mu_2, alpha, beta, omega, e_tilde,max_iter=10000
             
             # mu_3 update
             if include_ref_penalty:
-                if pr_norm_3 > rho * du_norm_3:
+                if pr_norm_3 > rho * du_norm_3 and du_norm_3 > 1e-12:
                     mu_3 *= tau_increase
                     if verbosity >=1:
                         print(f"mu_3 increased to {mu_3}")
-                elif du_norm_3 > rho * pr_norm_3:
+                elif du_norm_3 > rho * pr_norm_3 and pr_norm_3 > 1e-12:
                     mu_3 /= tau_decrease
                     if verbosity >=1:
                         print(f"mu_3 decreased to {mu_3}")
