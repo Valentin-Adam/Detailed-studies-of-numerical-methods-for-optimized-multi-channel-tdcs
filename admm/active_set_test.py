@@ -22,7 +22,7 @@ I_ind = 1
 verbosity = 1
 
 # load configs
-head_model = "Sphere"
+head_model = "Sphere" # Select head model here, 'Sphere' or 'Head'
 configs = configparser.ConfigParser()
 configs.optionxform = str
 configs.read('configs.ini')
@@ -279,12 +279,20 @@ else:
         random_indice = rng.integers(0,n_targets_head)
 
 from admm.admm_implementation.io_utils import compute_stats
+# Minor issue with arrays 
+if head_model == 'Head':
+    selected_radial = target_element_indices_radial[random_indice][0]
+    selected_tangential = target_element_indices_tangential[random_indice][0]
+else:
+    selected_radial = target_element_indices_radial[random_indice]
+    selected_tangential = target_element_indices_tangential[random_indice]
+
 print(f'-------------------------------------------------------------')
 print(f'--------Computing statististics for radial/quasiradial target with indice {target_element_indices_radial[random_indice]}--------')
-cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial,target_element_indices_radial[random_indice],radial_vectors[random_indice])
+cda_rad,foc_rad,cdt_rad,par_rad = compute_stats(B,I_radial,selected_radial,radial_vectors[random_indice])
 print(f'CDA: {cda_rad:.4f}, FOC: {foc_rad:.8f}, CDT: {cdt_rad:.4f}, PAR: {par_rad:.4f}')
 print(f'--------Computing statististics for tangential/quasitangential target with indice {target_element_indices_tangential[random_indice]}--------')
-cda_tan,foc_tan,cdt_tan,par_tan = compute_stats(B,I_tangential,target_element_indices_tangential[random_indice],tangential_vectors[random_indice])
+cda_tan,foc_tan,cdt_tan,par_tan = compute_stats(B,I_tangential,selected_tangential,tangential_vectors[random_indice])
 print(f"CDA: {cda_tan:.4f}, FOC: {foc_tan:.8f}, CDT: {cdt_tan:.4f}, PAR: {par_tan:.4f}")
 np.save(stats_file_rad, np.array([cda_rad,foc_rad,cdt_rad,par_rad]))
 np.save(stats_file_tan, np.array([cda_tan,foc_tan,cdt_tan,par_tan]))
@@ -294,8 +302,8 @@ tan_stats.append(np.array([cda_tan,foc_tan,cdt_tan,par_tan]))
 
 e_tilde =np.zeros(B.shape[0])
 e_tilde_2 =np.zeros(B.shape[0])
-e_tilde[3*target_element_indices_radial[random_indice]:3*(target_element_indices_radial[random_indice]+1)] = radial_vectors[random_indice]
-e_tilde_2[3*target_element_indices_tangential[random_indice]:3*(target_element_indices_tangential[random_indice]+1)] = tangential_vectors[random_indice]
+e_tilde[3*selected_radial:3*(selected_radial+1)] = radial_vectors[random_indice]
+e_tilde_2[3*selected_tangential:3*(selected_tangential+1)] = tangential_vectors[random_indice]
 B_ng_zero = np.zeros_like(B)
 dof_indices = np.concatenate([
     3 * grey_matter_indices,
@@ -303,4 +311,4 @@ dof_indices = np.concatenate([
     3 * grey_matter_indices + 2
 ])
 B_ng_zero[dof_indices] = B[dof_indices]
-_write_admm_results(I_total_radial[random_indice],meshfile,registered_sensors_path,run_dir,'',B_ng_zero,e_tilde,target_element_indices_radial[random_indice],B.shape[0],dp,second_I=I_total_tangential[random_indice], e_tilde_2=e_tilde_2)
+_write_admm_results(I_total_radial[random_indice],meshfile,registered_sensors_path,run_dir,'',B_ng_zero,e_tilde,selected_radial,B.shape[0],dp,second_I=I_total_tangential[random_indice], e_tilde_2=e_tilde_2)
