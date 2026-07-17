@@ -25,7 +25,7 @@ I_total = None
 I_ind = None
 
 # load configss
-head_model = "Sphere"
+head_model = "Sphere" # Select head model here, 'Sphere' or 'Head'
 configs = configparser.ConfigParser()
 configs.optionxform = str
 configs.read('configs.ini')

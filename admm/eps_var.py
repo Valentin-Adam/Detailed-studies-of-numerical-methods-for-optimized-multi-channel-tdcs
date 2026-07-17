@@ -23,7 +23,7 @@ grey_matter_non_target = True
 tolerance = 0.01
 
 # load configss
-head_model = "Sphere"
+head_model = "Sphere" # Select head model here, 'Sphere' or 'Head'
 configs = configparser.ConfigParser()
 configs.optionxform = str
 configs.read('configs.ini')

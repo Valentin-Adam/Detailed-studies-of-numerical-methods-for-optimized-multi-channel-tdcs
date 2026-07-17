@@ -24,7 +24,7 @@ update_mu_every = 1     # In Table 6.1 Thesis update_mu_every waas also set to 2
 verbosity =1
 
 # load configs
-head_model = "Sphere"
+head_model = "Sphere" # Select head model here, 'Sphere' or 'Head'
 configs = configparser.ConfigParser()
 configs.optionxform = str
 configs.read('configs.ini')
