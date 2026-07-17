@@ -181,7 +181,7 @@ def tDCS_admm(I_0, B,eps, mu_1, mu_2, alpha, beta, omega, e_tilde,max_iter=10000
         b_I = mu_1*z - p1 + B.T @ (mu_2*y- p2) 
         if include_ref_penalty:
             b_I = b_I + ones * (mu_3 * x - p3)
-        if mu_1 != mu1_old or mu_2 != mu2_old or iteration == 0: # check if we need to recompute A
+        if mu_1 != mu1_old or mu_2 != mu2_old or mu_3 != mu3_old or iteration == 0: # check if we need to recompute A
             A = mu_1*np.eye(n_chan) + mu_2*B_small
             if include_ref_penalty:
                 A = A + mu_3 * ones_onesT
