@@ -10,8 +10,8 @@ import time
 max_iterations = 5000
 alpha = 1
 beta = 1
-rel_tol = 1.e-7
-abs_tol = 1.e-8
+rel_tol = 1.e-4
+abs_tol = 1.e-5
 eps = 10000             # In Table 6.1 Thesis eps waas also set to 6100, 0.0001
 omega_value_non_target = 1.0 # grey matter
 omega_value = 0.001  # target region &  non grey matter
@@ -21,7 +21,7 @@ mu_1 = 0.1
 mu_2 = 0.1 
 mu_3 = 0.1
 update_mu_every = 1     # In Table 6.1 Thesis update_mu_every waas also set to 20
-verbosity =1
+verbosity =0
 
 # load configs
 head_model = "Sphere" # Select head model here, 'Sphere' or 'Head'
